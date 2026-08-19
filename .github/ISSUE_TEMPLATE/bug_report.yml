@@ -1,0 +1,101 @@
+name: Bug Report
+description: Report a reproducible problem in AlternativeCAM / CNC Drag Knife Workbench
+title: "[Bug] "
+labels:
+  - bug
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for helping improve AlternativeCAM. Please provide enough detail to reproduce the problem safely.
+
+  - type: input
+    id: version
+    attributes:
+      label: Software Version
+      description: Example: v0.4.9.7 Beta
+      placeholder: v0.4.9.7 Beta
+    validations:
+      required: true
+
+  - type: input
+    id: browser
+    attributes:
+      label: Browser
+      description: Browser name and version
+      placeholder: Chrome 151
+    validations:
+      required: true
+
+  - type: input
+    id: os
+    attributes:
+      label: Operating System
+      placeholder: Windows 11
+
+  - type: input
+    id: machine
+    attributes:
+      label: CNC Machine
+      placeholder: Carvera / Carvera Air / Z1 / Other
+
+  - type: input
+    id: controller
+    attributes:
+      label: Controller / Firmware
+      placeholder: Firmware version if known
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What happened?
+      description: Describe the problem clearly.
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduce
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Import...
+        2. Select...
+        3. Click...
+    validations:
+      required: true
+
+  - type: dropdown
+    id: gcode
+    attributes:
+      label: Does this affect generated G-code?
+      options:
+        - Unknown
+        - No
+        - Yes
+    validations:
+      required: true
+
+  - type: dropdown
+    id: safety
+    attributes:
+      label: Could this cause unsafe machine behavior?
+      description: Select Yes for unexpected movement, spindle activation, unsafe Z motion, or similarly hazardous output.
+      options:
+        - No
+        - Unknown
+        - Yes — SAFETY ISSUE
+    validations:
+      required: true
+
+  - type: textarea
+    id: files
+    attributes:
+      label: Files / Screenshots / Additional Information
+      description: Attach a minimal SVG, .dragknife project, G-code file, or screenshots when useful. Remove private information before uploading.
