@@ -1,30 +1,50 @@
 # AlternativeCAM Changelog
 
-This file records notable changes to AlternativeCAM software.
+This changelog records public AlternativeCAM software releases.
 
 ---
 
-## CNC Drag Knife Workbench v0.4.9.3 Beta
+## CNC Drag Knife Workbench v0.4.9.7 Beta
 
-Current development release.
+**First Public GitHub Release**
 
 ### Highlights
 
-- Expanded vector design and editing capabilities.
-- Improved text workflow.
-- Improved path-editing workflow.
-- Improved grouping and object handling.
-- Expanded Boolean operations.
-- Improved tab placement.
-- Improved cut-type assignment.
-- Transform interface improvements.
-- File and job workflow improvements.
-- Numerous UI and usability improvements.
+- SVG import and artwork preparation
+- Expanded vector-editing tools
+- Shape Designer
+- Advanced Offset Path tools
+- Fillet and Chamfer
+- Simplify / Smooth
+- Cleanup and Repair
+- Geometry Inspector
+- Boolean operations
+- Selection filters and object utilities
+- Layers / Objects management
+- Align / Distribute
+- Array / Step-and-Repeat
+- Material presets
+- Design Safe Margin
+- Design History
+- Design Diagnostics
+- Kiss Cut and Thru Cut workflows
+- Drag-knife corner compensation
+- Multi-Pass Thru Cutting
+- Progressive Depth
+- Manual and automatic holding tabs
+- Toolpath Preview
+- Simulation
+- G-code Viewer
+- Project save/open workflow
+- Program Folder expanded tools
+- Material-boundary and geometry safety checks
 
-See the GitHub Release notes for detailed changes.
+### Status
+
+Beta software.
+
+Generated G-code should always be reviewed before use.
 
 ---
 
-## CNC Drag Knife Workbench v0.3.29 Beta
-
-Previous major development baseline.
+Future public releases will be added above this entry.
