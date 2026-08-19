@@ -1,96 +1,238 @@
-# # AlternativeCAM
+# AlternativeCAM
 
 ### Alternative CNC Toolpath Software by GabrielMaker
 
-**Current Application: CNC Drag Knife Workbench**
+**Current Application:** CNC Drag Knife Workbench  
+**Current Version:** v0.4.9.7 Beta  
+**Status:** First Public GitHub Release
 
-AlternativeCAM is the home of CNC Drag Knife Workbench and future software for CNC processes that do not fit neatly into traditional milling CAM workflows.
+AlternativeCAM is the home of **CNC Drag Knife Workbench** and future software for CNC processes that do not fit neatly into traditional milling CAM workflows.
 
-The project currently focuses on drag-knife cutting for desktop CNC machines, with future development intended to expand into additional processes such as pen/marker plotting, diamond-drag engraving, etching, and other alternative CNC operations.
+The project currently focuses on drag-knife cutting for desktop CNC machines. Future development is intended to expand into additional alternative CNC processes such as pen/marker plotting, diamond-drag engraving, etching, and related workflows.
 
 ---
 
 ## Project Goal
 
-The goal of AlternativeCAM is to develop robust, practical CNC software that everyone can use freely — from hobbyists and makers to educators and businesses.
+The goal of AlternativeCAM is to build robust, practical CNC software that makers, hobbyists, educators, and businesses can use freely.
 
-GabrielMaker wants future improvements, fixes, compatibility updates, and new features to remain centered in one place so the entire community can benefit from them.
+GabrielMaker wants future fixes, improvements, compatibility updates, and new features to remain centered in one place so the entire community can benefit from them. Rather than having useful changes scattered across separate modified versions, contributors are strongly encouraged to submit improvements back to this repository whenever possible.
 
-Rather than having separate modified versions scattered across the internet, contributors are strongly encouraged to submit useful changes back to this repository whenever possible.
-
-If you improve compatibility, fix a bug, add a useful feature, improve documentation, or find a better way of doing something, contributing that work here helps ensure those improvements remain available to everyone.
-
-The goal is to allow AlternativeCAM to grow from a shared and maintained foundation while remaining accessible to the CNC community.
+If you fix a bug, improve machine compatibility, add a useful feature, improve documentation, or find a better way of doing something, contributing that work here helps everyone benefit and gives future development a shared, maintained foundation.
 
 ---
 
 # CNC Drag Knife Workbench
 
-**Current Version: v0.4.9.3 Beta**
+CNC Drag Knife Workbench is a browser-based application for preparing SVG artwork, creating compensated drag-knife toolpaths, previewing CNC motion, and generating G-code for desktop CNC machines.
 
-CNC Drag Knife Workbench is a browser-based application designed to prepare vector artwork and generate compensated drag-knife toolpaths for desktop CNC machines.
+It was originally developed around Makera CNC machines and currently provides its most tested workflow on that platform.
 
-It was originally developed around Makera CNC machines and currently provides its most tested workflow for that platform.
+## Current Capabilities — v0.4.9.7 Beta
 
-### Current capabilities include
+### SVG & Artwork Import
 
-- SVG import
-- Artwork positioning and manipulation
-- Vector editing
-- Text tools
-- Grouping and object management
-- Cut-type assignment
-- Kiss cuts
-- Through cuts
-- Drag-knife blade-offset compensation
-- Corner handling
-- Manual and automatic tabs
-- Path ordering
-- Toolpath preview
-- G-code simulation
-- G-code generation
-- Job saving and loading
-- Material and workspace configuration
+- Standard SVG import
+- Oversized-SVG preflight with cancel, actual-size, or shrink-to-fit handling
+- Paste SVG from clipboard
+- Drag-and-drop SVG import
+- Multiple SVG import
+- Auto-grouping of multi-path imported artwork
 
-The project remains in **Beta**. Generated G-code should always be reviewed before being run on a CNC machine.
+### Design & Artwork Tools
+
+- Move, resize, rotate, mirror, duplicate
+- Numeric Size, Rotation, and Position controls
+- Position relative to Material WCS
+- Group / Ungroup
+- Solo Selection
+- Object locking
+- Rename and auto-number
+- Stacking-order controls
+- Align and distribute
+- Align to material
+- Center on material
+- Array / Step-and-Repeat with Step or Gap spacing
+
+### Shape & Vector Tools
+
+- Shape Designer
+- Offset Path: Inside / Outside / Both
+- Live offset preview
+- Single-corner Fillet / Round
+- Single-corner Chamfer
+- Simplify Paths
+- Smooth Paths
+- Path Cleanup / Repair
+- Close open paths within tolerance
+- Exact and reverse-direction duplicate detection
+- Coincident / overlapping geometry detection
+- Geometry Inspector
+
+### Boolean Operations
+
+- Union
+- Subtract
+- Intersect
+- Divide
+
+### Selection, Layers & Objects
+
+- Selection filters
+- Select Kiss / Thru / Open paths
+- Select Same as Primary
+- Invert and clear selection
+- Object/group hierarchy
+- Visibility and locking
+- Output-to-G-code enable/disable
+- Kiss / Thru / Multi-Pass identification
+- Solo Selection
+- Rename and auto-number utilities
+
+### Design History & Diagnostics
+
+- Design History
+- Design Diagnostics
+- CAM-preparation warnings
+- Duplicate and overlapping geometry checks
+
+### Material, Grid & Guides
+
+- Configurable material size
+- Factory default 150 × 100 mm
+- Saved material presets
+- Green visual-only Design Safe Margin
+- Material/WCS origin configuration
+- WCS X/Y offsets
+- Configurable grid and snapping
+- Rulers and drag-out guides
+- Guide locking/deletion
 
 ---
 
-## Future Direction
+# Drag Knife CAM
 
-AlternativeCAM is intended to eventually support additional CNC processes from the same general workspace.
+## Cut Types
 
-Potential future tool modes include:
+Vectors can be assigned as:
 
-- Drag Knife Cutting
-- Pen / Marker Plotting
-- Diamond Drag Engraving
-- Etching
-- Other alternative CNC processes
+- **Kiss Cut**
+- **Thru Cut**
+- **Multi-Pass Thru Cut**
 
-The repository name **AlternativeCAM** was chosen so development is not permanently tied to drag-knife cutting alone.
+Visual identification:
 
-A future expanded application may be released under the name:
+- Black = Kiss Cut
+- Orange = Thru Cut
+- Red = Multi-Pass Thru Cut
 
-**Alternative CAM Workbench**
+Kiss Cuts are generated before Thru Cuts.
+
+## Drag-Knife Compensation
+
+- Configurable blade offset
+- Corner compensation
+- Corner overshoot and return movement
+- Smooth-join tolerance
+- Micro-segment cleanup
+- Compensated drag-knife toolpath generation
+
+## Multi-Pass Thru Cutting
+
+- Per-vector pass count
+- Progressive Depth
+- Same Depth Each Pass
+- Per-vector Final Z
+- Final Z initially inherits the global Thru Cut Z
+- Red display for multi-pass paths
+- Pass-count identification in Layers / Objects
+
+## Holding Tabs
+
+- Automatic tabs
+- Manual tabs
+- Configurable tab width
+- Configurable Tab Depth / Lift Amount
+- Configurable tab count
+- Sharp-corner avoidance
+- Manual tab locations retained across multi-pass operations
+
+---
+
+# Cut Setup & G-code Output
+
+- Separate Kiss Cut and Thru Cut settings
+- Cut-order controls
+- Original SVG ordering option
+- Per-path Output-to-G-code control
+- Optional end-of-job `G28`
+- Metric G-code output using `G21`
+- Spindle forced OFF with `M5`
+- Drag-knife output does not intentionally start the spindle with `M3` / `M4`
+- Material-boundary export protection
+- Source-geometry overlap checks before export
+
+---
+
+# Preview, Simulator & G-code Viewer
+
+- Cut Preview
+- Toolpath Simulator
+- Generated G-code simulation
+- Open external G-code files for inspection
+- Show/hide G-code
+- Zoom, pan, and fit-to-view
+- 3D G-code inspection
+- Tab visualization
+- Toolpath and movement visualization
+
+---
+
+# Project & File Management
+
+- Open Workbench jobs
+- Save Job / Save Job As
+- Close Job with unsaved-change protection
+- Connect Program Folder
+- Built-in Calibration / Benchmark Test
+- Protected benchmark/template workflow
+- Browser-stored preferences
+- Connected-folder settings/assets
+- Reset configuration controls
+
+---
+
+## Expanded Tools
+
+v0.4.9.7 Beta includes an expanded modular design-tool system. The core Workbench remains usable without connecting the Program Folder, while connecting it enables expanded design tools and enhanced SVG intake.
+
+---
+
+## Not Yet Included
+
+The following are future development areas and should not be considered current v0.4.9.7 Beta functionality:
+
+- Pen / Marker plotting mode
+- Diamond Drag engraving mode
+- Etching mode
+- Redesigned Vector Drawing tool
+- Redesigned Text Tool
 
 ---
 
 # Download
 
-The recommended way to install CNC Drag Knife Workbench is through the official GitHub Releases page.
+The recommended way to obtain CNC Drag Knife Workbench is through the official **GitHub Releases** section of this repository.
 
-Download the latest release from:
+**v0.4.9.7 Beta is the first public GitHub release.**
 
-**Releases → Latest Release**
-
-Do not download unofficial redistributed copies when an official release is available.
+Use the official AlternativeCAM repository whenever possible rather than redistributed copies.
 
 ---
 
 # Browser Requirements
 
-CNC Drag Knife Workbench is intended for current desktop versions of:
+Use a current desktop version of:
 
 - Google Chrome
 - Microsoft Edge
@@ -101,130 +243,75 @@ Some functionality relies on modern browser file-system capabilities and may not
 
 # Supported Machines
 
-CNC Drag Knife Workbench was initially developed for Makera CNC machines.
-
 Current development and testing primarily focuses on:
 
 - Makera Carvera
 - Makera Carvera Air
 - Makera Z1
 
-Support for more generic CNC/controller profiles may be expanded in future releases.
+Support for additional CNC machines and controller profiles may be added in future releases.
 
-AlternativeCAM and GabrielMaker are independent community projects and are not affiliated with or endorsed by Makera.
+**AlternativeCAM and GabrielMaker are independent community projects and are not affiliated with or endorsed by Makera.**
 
 ---
 
-# Safety
+# Future Direction
 
-CNC machines can cause machine damage, tool damage, property damage, fire, or personal injury when operated improperly.
+AlternativeCAM is intended to grow beyond drag-knife cutting. Potential future tool modes include:
 
-**Never blindly run generated G-code.**
+- Drag Knife Cutting
+- Pen / Marker Plotting
+- Diamond Drag Engraving
+- Etching
+- Other alternative CNC processes
 
-Before running a job:
+The repository name **AlternativeCAM** was chosen so the project is not permanently tied to one CNC process.
 
-- Review the generated toolpath.
-- Confirm your machine and controller are compatible.
-- Confirm tool selection.
-- Confirm work coordinates.
-- Confirm Z heights and cutting depths.
-- Confirm feeds and machine movement.
-- Confirm workholding.
-- Confirm material dimensions.
-- Verify that unexpected spindle commands are not present.
-- Remain responsible for safe machine operation.
-
-Use of AlternativeCAM software is at your own risk.
+As the software expands, the broader application may eventually be released under the name **Alternative CAM Workbench**.
 
 ---
 
 # Source Available
 
-### Free to Use — Commercial Exploitation Restricted
+## Free to Use — Commercial Exploitation Restricted
 
 AlternativeCAM is **source available**, but it is not distributed under a conventional open-source license.
 
-The software may be used freely for:
+The software may be used freely for personal, hobby, educational, internal business, and commercial production work. Businesses may use the software to manufacture products and provide paid services.
 
-- Personal use
-- Hobby use
-- Educational use
-- Internal business use
-- Commercial production work
+The AlternativeCAM software or source code itself may not be commercially exploited without permission. This includes selling or rebranding the software, selling modified versions, charging for hosted access, commercial redistribution of forks, or incorporating substantial portions of the code into another commercial software product.
 
-Businesses may use AlternativeCAM to manufacture products and provide services for paying customers.
-
-For example, you may use CNC Drag Knife Workbench to create decals or manufactured products and sell those products.
-
-However, you may not commercially exploit the AlternativeCAM software or source code itself without permission.
-
-This includes restrictions on:
-
-- Selling the software
-- Selling modified versions
-- Rebranding the software
-- Charging for access to it
-- Commercially hosting it
-- Incorporating substantial portions of the code into commercial software
-- Commercially distributing forks
-- Otherwise monetizing the AlternativeCAM source code or application itself
-
-See [LICENSE.md](LICENSE.md) for the complete license terms.
+See [LICENSE.md](LICENSE.md) for complete terms.
 
 ---
 
 # Contributions
 
-Contributions are encouraged.
+Contributions are encouraged. If you fix a bug, improve compatibility, improve documentation, add a useful feature, improve the interface, improve toolpath generation, or identify a safer implementation, please consider contributing that work back to the main AlternativeCAM repository.
 
-If you:
+Keeping development centralized allows the entire CNC community to benefit and reduces fragmentation.
 
-- Fix a bug
-- Improve machine compatibility
-- Improve documentation
-- Add a useful feature
-- Improve user experience
-- Improve toolpath generation
-- Find a safer or more reliable implementation
-
-please consider contributing the improvement back to the main AlternativeCAM repository.
-
-Keeping improvements centralized allows the entire CNC community to benefit and reduces the chance of incompatible or abandoned versions spreading across the internet.
-
-Please read [CONTRIBUTING.md](CONTRIBUTING.md) before submitting changes.
+See [CONTRIBUTING.md](CONTRIBUTING.md).
 
 ---
 
-# Reporting Bugs
+# Reporting Bugs & Feature Requests
 
-Please use GitHub Issues for reproducible software problems.
+Please use GitHub Issues for reproducible problems and feature requests. Include the Workbench version, browser, operating system, CNC machine/controller information, reproduction steps, screenshots, and a minimal SVG/project/G-code file when useful.
 
-When reporting a bug, include whenever possible:
-
-- AlternativeCAM / CNC Drag Knife Workbench version
-- Browser and browser version
-- CNC machine
-- Controller or firmware information
-- Steps required to reproduce the issue
-- Screenshots
-- Relevant SVG or `.dragknife` project file
-- Generated G-code when applicable
-
-**Remove private or sensitive information before uploading files.**
+Remove private or sensitive information before uploading files.
 
 ---
 
-# Feature Requests
+# CNC Safety
 
-Feature suggestions are welcome through GitHub Issues.
+CNC machines can cause machine damage, tool damage, property damage, fire, or personal injury when operated improperly.
 
-Please explain:
+**Never blindly run generated G-code.**
 
-- The problem you are trying to solve
-- Your proposed workflow
-- Why it would be useful to other users
+Always verify machine/controller compatibility, tool selection, coordinate system, work origin, Z heights, depths, feeds, workholding, material position, toolpath boundaries, and expected spindle behavior.
 
-Features that benefit the broader user community are especially encouraged.
+Use of AlternativeCAM software is at your own risk.
 
 ---
 
@@ -232,17 +319,17 @@ Features that benefit the broader user community are especially encouraged.
 
 AlternativeCAM is actively developed.
 
-CNC Drag Knife Workbench is currently Beta software and may contain bugs, incomplete features, or compatibility issues.
-
-Major releases and important changes will be documented through GitHub Releases and the project changelog.
+**CNC Drag Knife Workbench v0.4.9.7 Beta** is the first public GitHub release. Beta software may contain bugs, incomplete functionality, compatibility problems, or unexpected behavior.
 
 ---
 
 # License
 
-Copyright © 2026 GabrielMaker.
+**Source Available — Commercial Exploitation Restricted**
 
-AlternativeCAM, Alternative CAM Workbench, AlternativeCAM Software, and CNC Drag Knife Workbench are covered by the AlternativeCAM Software License.
+AlternativeCAM, AlternativeCAM Software, Alternative CAM Workbench, and CNC Drag Knife Workbench are covered by the AlternativeCAM Software License.
+
+Copyright © 2026 GabrielMaker. All Rights Reserved.
 
 See [LICENSE.md](LICENSE.md).
 
@@ -252,4 +339,4 @@ See [LICENSE.md](LICENSE.md).
 
 Developed by **GabrielMaker**
 
-Community feedback, testing, bug reports, documentation improvements, and code contributions are appreciated.
+Community testing, feedback, bug reports, documentation improvements, and code contributions are appreciated.
