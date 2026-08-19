@@ -1,0 +1,54 @@
+name: Feature Request
+description: Suggest an improvement or new AlternativeCAM capability
+title: "[Feature] "
+labels:
+  - enhancement
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Feature ideas are welcome. Please focus on the problem being solved and the proposed workflow.
+
+  - type: textarea
+    id: problem
+    attributes:
+      label: What problem would this solve?
+    validations:
+      required: true
+
+  - type: textarea
+    id: workflow
+    attributes:
+      label: Describe the proposed workflow
+    validations:
+      required: true
+
+  - type: textarea
+    id: benefit
+    attributes:
+      label: Who would benefit from this feature?
+
+  - type: dropdown
+    id: area
+    attributes:
+      label: Primary area
+      options:
+        - Design
+        - Drag Knife CAM
+        - Tabs
+        - Vector Editing
+        - Simulator
+        - G-code
+        - Machine Compatibility
+        - Pen / Plotting (Future)
+        - Diamond Drag (Future)
+        - Etching (Future)
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: details
+    attributes:
+      label: Additional information
+      description: Add mockups, examples, or technical details if useful.
